@@ -27,4 +27,10 @@ Clone the repository and run the project locally:
 git clone https://github.com/Sanjana-2802/Profile_Analyzer.git
 cd your-repo-name
 ```
+before running To get it running:
+
+    1.Go to Groq and sign up for a free account.
+    2.Get your API key from the dashboard.
+    3.In script.js, replace "YOUR_GROQ_API_KEY" on line 73 with your Groq key (e.g., "Bearer gsk-...").
+The model is llama-3.3-70b-versatile, which is fast and free.
 Then, simply open `index.html` in your browser.

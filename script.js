@@ -1,3 +1,4 @@
+
 let profileData = null;
 
 async function fetchProfile() {
@@ -66,18 +67,25 @@ async function askAI() {
         return;
     }
 
+    let apiKey = prompt("Enter your Groq API key:");
+    if (!apiKey || !apiKey.trim()) {
+        alert("API key is required.");
+        return;
+    }
+    apiKey = apiKey.trim();
+
     document.getElementById("ai-response").style.display = "block";
     document.getElementById("ai-response").innerHTML = `<p><strong>AI is thinking...</strong></p>`;
 
     try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer YOUR_OPENAI_API_KEY",
+                "Authorization": `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
+                model: "llama-3.3-70b-versatile",
                 messages: [
                     { role: "system", content: "You are an AI assistant that provides structured, well-formatted insights on GitHub profiles. Your response must be formatted using HTML, with headings (<h2>, <h3>), bullet points (<ul><li>), and proper line breaks (<br><br>) for readability." },
                     { role: "user", content: `Analyze the following GitHub profile data and respond in a structured, readable format:\n\n${JSON.stringify(profileData, null, 2)}\n\nQuestion: ${query}` },

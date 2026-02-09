@@ -34,3 +34,4 @@ before running To get it running:
     3.In script.js, replace "YOUR_GROQ_API_KEY" on line 73 with your Groq key (e.g., "Bearer gsk-...").
 The model is llama-3.3-70b-versatile, which is fast and free.
 Then, simply open `index.html` in your browser.
+
